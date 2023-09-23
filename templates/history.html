@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- <style>
+    .history-container {
+        overflow-y: scroll;
+    }
+</style> -->
+<link href="{{url_for('static', filename='css/layouts/history.css')}}" rel="stylesheet" />
+<div class="history">
+    <img src="{{url_for('static',filename='images/History-icon.png')}}" class="background-image" />
+    <div class="history-box">
+        <p class="history-title">Your search history</p>
+        <hr class="history-title-line">
+        <div class="history-container">
+            {% if 'email' in session%}
+                {% set index = namespace(value=1) %}        
+                {%for history in history_list %}
+                {%if index.value<8 %}
+                <div class="history-item">
+                    <div class="history-item-inner">
+                    <div class="history-class-part1">
+                    <p class="history-item-name">{{ history[1] }}</p>
+                    <!-- temporary href link, need to be integrated with search page later -->
+                    <div class="history-item-link">
+                        <a href="{{ url_for('search_again', abc=history[1]) }}" class="history-item-link-text">Search again</a>
+                    </div>
+                    </div>
+                    <hr class="history-item-line">
+                    <div class="history-class-part2">
+                    <!-- <p class="history-item-avgprice">Average Price: {{history['average-price']}}</p> -->
+                    <p class="history-item-date">{{ history[2] }}</p>
+                    </div>
+                </div>
+                </div>
+                {% endif %}
+                {% set index.value = index.value + 1 %}
+
+                {% endfor %}
+            {% else %}
+            <div style="color:white; text-align: center; font-size: 16px;"><p>Please log in to view your search history</p></div>
+            {% endif %}
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+{% endblock %}

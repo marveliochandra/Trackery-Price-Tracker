@@ -1,0 +1,62 @@
+<script>
+  $(document).ready(() => {
+    $("#profile-button").click(() => {
+      $("#profile").toggle();
+    });
+    $("#navbar-button").click(()=>{
+      $("#routing").toggleClass("routing--hidden");
+    })
+  });
+</script>
+
+<link
+  href="{{url_for('static', filename='css/layouts/navbar.css')}}"
+  rel="stylesheet"
+/>
+<nav class="navbar">
+  <button class="navbar__toggler" type="button" id="navbar-button">
+    <i class="fa fa-bars"></i>
+  </button>
+
+  <div class="routing routing--hidden" id="routing">
+    <a class="routing__logocontainer" href="{{url_for('home')}}">
+      <img
+        src="{{url_for('static', filename='images/logo.png')}}"
+        alt="Logo"
+        class="routing__logo"
+      />
+    </a>
+    <a class="routing__link" href="{{url_for('home')}}">Home</a>
+    <a class="routing__link" href="{{url_for('search')}}">Search</a>
+    <a class="routing__link" href="{{url_for('inventory')}}">Inventory</a>
+    <a class="routing__link" href="{{url_for('history')}}">History</a>
+  </div>
+
+  <div class="dropdown">
+    <button class="dropdown__icon" id="profile-button">
+      <i class="fa fa-regular fa-circle-user"></i>
+    </button>
+
+    <!--User integration here done-->
+    {% if 'email' in session %}
+    <div class="dropdown__box" id="profile">
+      <div>
+        <i class="fa fa-regular fa-circle-user dropdown__logo"></i>
+      </div>
+      <div class="dropdown__name">{{session['email']}}</div>
+      <div class="dropdown__line"></div>
+      <a href="{{url_for('logout')}}" class="dropdown__register"><i class="fa fa-sign-out dropdown__signoutlogo"></i>Sign Out</a>
+    </div>
+    {% else %}
+    <div class="dropdown__box" id="profile">
+      <div>
+        <i class="fa fa-regular fa-circle-user dropdown__logo"></i>
+      </div>
+      <div class="dropdown__name">Guest</div>
+      <div class="dropdown__line"></div>
+      <a href="{{url_for('login')}}" class="dropdown__login">Sign In</a>
+      <a href="{{url_for('register')}}" class="dropdown__register">Register</a>
+    </div>
+    {% endif %}
+  </div>
+</nav>

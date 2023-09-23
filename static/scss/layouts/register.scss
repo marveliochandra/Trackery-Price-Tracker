@@ -1,0 +1,215 @@
+@import "../_import.scss";
+
+.register-page{
+    height:100vh;
+    width:100%;
+    background-color:#111111;
+    overflow: hidden;
+    position: relative;
+}
+
+.background-image {
+    /* Might need change for moving image to the right */
+    position: absolute;
+    top: 400px;
+    right: 400px;
+    transform: translate(-50%, -50%);
+    width: 1200px;
+    height: auto;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    z-index: 1;
+}
+
+.register-box{
+    background-color: #212328;
+    /* width:609px; */
+    width: 500px;
+    height: 613px;
+    border-top: 4px solid #5865F2;
+    border-radius: 5px;
+    top:40%;
+}
+
+.register-title{
+    position: absolute;
+    top:6%;
+    color: white;
+    transform: translate(-50%, -50%);
+    left:50%;
+    font-size: 20px;
+}
+
+.register-form{
+    position: absolute;
+    /* padding-left:17%;
+    padding-right: 17% ; */
+    top:48%;
+    width:80%;
+    height: 70%;
+    transform: translate(-50%, -50%);
+    left:50%;
+}
+
+.register-text-1{
+    position: absolute;
+    color: white;
+    top:-1%;
+}
+
+.register-email{
+    width: 100%;
+    height: 43px;
+    position: absolute;
+    color: white;
+    top:11%;
+    transform: translate(-50%, -50%);
+    left:50%;
+    background-color: #3D414A;
+    border: 0;
+    outline: none;
+    caret-color: white;
+}
+
+.register-email:focus{
+    background-color: #3D414A;
+    color: white;
+}
+
+.register-text-2{
+    position: absolute;
+    color: white;
+    top:20%;
+}
+
+.register-username{
+    width: 100%;
+    height: 43px;
+    position: absolute;
+    color: white;
+    top:32%;
+    transform: translate(-50%, -50%);
+    left:50%;
+    background-color: #3D414A;
+    border: 0;
+    outline: none;
+    caret-color: white;
+}
+
+.register-username:focus{
+    background-color: #3D414A;
+    color: white;
+}
+
+.register-text-3{
+    position: absolute;
+    color: white;
+    top:41%;
+}
+
+.register-password{
+    width: 100%;
+    height: 43px;
+    position: absolute;
+    color: white;
+    top:53%;
+    transform: translate(-50%, -50%);
+    left:50%;
+    background-color: #3D414A;
+    border: 0;
+    caret-color: white;
+    color: white;
+}
+
+.register-password:focus{
+    background-color: #3D414A;
+    color: white;
+}
+
+.register-text-4{
+    position: absolute;
+    color: white;
+    top:62%;
+}
+
+.register-confirmpassword{
+    width: 100%;
+    height: 43px;
+    position: absolute;
+    color: white;
+    top:74%;
+    transform: translate(-50%, -50%);
+    left:50%;
+    background-color: #3D414A;
+    border: 0;
+    outline: none;
+    caret-color: white;
+}
+
+.register-confirmpassword:focus{
+    background-color: #3D414A;
+    color: white;
+}
+
+
+.register-terms{
+    position: absolute;
+    top:82%;
+}
+
+.register-privacy{
+    position: absolute;
+    top:88%;
+}
+
+
+.register-submit{
+    position: absolute;
+    color: white;
+    background-color: #5865F2;
+    border: 0;
+    top:100%;
+    height: 43px;
+}
+
+.register-text-5{
+    position: absolute;
+    color: white;
+    top:83.5%;
+    transform: translate(-50%, -50%);
+    left:31%;
+
+}
+.register-text-6{
+    position: absolute;
+    color: white;
+    top:89.5%;
+    transform: translate(-50%, -50%);
+    left:24%;
+    text-align: right;
+}
+
+.register-text-7{
+    position: absolute;
+    color: white;
+    top:92%;
+    transform: translate(-50%, -50%);
+    left:37%;
+
+}
+.register-text-8{
+    position: absolute;
+    color: #0E87C6;
+    top:92%;
+    transform: translate(-50%, -50%);
+    left:64%;
+    text-decoration: none;
+}

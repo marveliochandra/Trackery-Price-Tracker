@@ -1,0 +1,92 @@
+{% extends "base.html" %} {% block content %}
+<link
+  href="{{url_for('static', filename='css/layouts/search.css')}}"
+  rel="stylesheet"
+/>
+<div class="search">
+  <img
+    src="{{url_for('static',filename='images/search-icon.png')}}"
+    class="search__bgimg"
+  />
+
+  <div class="search__content">
+    <form
+      id="search"
+      class="search__barcontainer"
+      action="{{url_for('search')}}"
+      method="GET"
+    >
+      <input
+        type="text"
+        name="query"
+        class="search__bar"
+        placeholder="Start your Journey"
+      />
+    </form>
+
+    <form class="result">
+      <div class="result__summary">
+        <img
+          class="result__icon"
+          src="{{url_for('static',filename='images/logo-tokped.png')}}"
+        />
+        <div class="result__text">Average Price: Rp.{{'{:,}'.format(tokopedia_avg)}}</div>
+      </div>
+      <div class="result__box">
+        {% set index = namespace(value=0) %}
+        {% for item in tokopedia %}
+        <div class="entry">
+          <img class="entry__img" src="{{item.img_src}}" />
+          <div class="entry__name">{{item.name}}</div>
+          <div class="entry__price">{{item.price}}</div>
+          <a href="{{item.link}}" class="entry__firstbutton">Visit Page</a>
+          {% if 'email' in session %}
+          <a href="{{url_for('searchindex', query = query, index = index.value)}}" class = "entry__secondbutton">Add Tracking</a>
+          {% else %}
+          <a href="#" class = "entry__secondbutton">Add Tracking</a>
+          {% endif %}
+          {% set index.value = index.value + 1 %}
+        </div>
+        {% endfor %}
+      </div>
+      {% if tokopedia|length == 0 %}
+      <div class="result__empty">
+        Nothing to see here. search to start your journey.
+      </div>
+      {% endif %}
+    </form>
+
+    <form class="result">
+      <div class="result__summary">
+        <img
+          class="result__icon"
+          src="{{url_for('static',filename='images/logo-lazada.png')}}"
+        />
+        <div class="result__text">Average Price: Rp.{{'{:,}'.format(lazada_avg)}}</div>
+      </div>
+      <div class="result__box">
+        {% set index2 = namespace(value=0) %}
+        {% for item in lazada %}
+        <div class="entry">
+          <img class="entry__img" src="{{item.img_src}}" />
+          <div class="entry__name">{{item.name}}</div>
+          <div class="entry__price">{{item.price}}</div>
+          <a href="{{item.link}}" class="entry__firstbutton">Visit Page</a>
+          {% if 'email' in session %}
+          <a href="{{url_for('searchindexlaz', query = query, index = index2.value)}}" class = "entry__secondbutton">Add Tracking</a>
+          {% else %}
+          <a href="#" class = "entry__secondbutton">Add Tracking</a>
+          {% endif %}
+          {% set index2.value = index2.value + 1 %}
+        </div>
+        {% endfor %}
+      </div>
+      {% if lazada|length == 0 %}
+      <div class="result__empty">
+        Nothing to see here. search to start your journey.
+      </div>
+      {% endif %}
+    </form>
+  </div>
+</div>
+{% endblock %}

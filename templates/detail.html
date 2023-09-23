@@ -1,0 +1,63 @@
+{% extends "base.html" %} {% block content %}
+<link
+  href="{{url_for('static', filename='css/layouts/detail.css')}}"
+  rel="stylesheet"
+/>
+<div class="detail">
+  <img
+    src="{{url_for('static',filename='images/search-logo.png')}}"
+    class="detail__bgimg"
+  />
+
+  <form class="detail__content">
+    <div class="detailbox">
+      <div class="header">
+        <div class="header__center">Visit Item</div>
+        <div class="header__right">
+          <a href="{{url_for('inventory')}}" class="header__link">Return</a>
+        </div>
+      </div>
+
+      <div class="line"></div>
+      {% for item in item %}
+      <div class="info">
+        <img
+          class="info__img"
+          src="{{item[2]}}"
+        />
+
+        <div class="info__box">
+          <div class="info__title">{{item[1]}}</div>
+          <div class="info__price">Rp {{item[4]}}</div>
+          {% if predicted_price != -69 %}
+          <img
+            class="info__graph"
+            src="{{url_for('static',filename='images/plot.png')}}"
+          />
+          {% endif %}
+          <div class="info__buttoncontainer">
+            <a href="{{item[3]}}" class="info__firstbutton">Visit Page</a>
+            <a href="{{url_for('inventorydelete',index=indexx)}}" class = "info__secondbutton">Remove Tracking</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="pred__title">Price Prediction</div>
+      {% if predicted_price != -69 %}
+      <div class="pred">
+        <div class="pred__entry">
+          <div class="pred__title">Tomorrow</div>
+          <div class="pred__line"></div>
+          <div class="pred__price">Rp {{predicted_price}}</div>
+        </div>
+      </div>
+      {% else %}
+      <div class="pred__entry">
+          <div class="pred__title">Need more data to predict, please wait for a few more days</div>
+      </div>
+      {% endif %}
+    </div>
+  </form>
+</div>
+{% endblock %}

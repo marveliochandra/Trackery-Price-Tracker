@@ -1,0 +1,105 @@
+{% extends "base.html" %} {% block content %}
+<link
+  href="{{url_for('static', filename='css/layouts/register.css')}}"
+  rel="stylesheet"
+/>
+<script src="{{url_for('static', filename='js/register.js')}}"></script>
+
+{% if code %}
+<script>
+  $(document).ready(() => registerResponse("{{code}}"));
+</script>
+{% endif %}
+
+<script>
+  async function validateRegister() {
+    const form = document.getElementById("form");
+    const response = await fetch(
+      "{{url_for('registerformvalidation', _external=True)}}",
+      {
+        method: "POST",
+        body: new FormData(form),
+      }
+    );
+    if (!response.ok || registerResponse(await response.text())) {
+      form.submit();
+    }
+  }
+</script>
+
+<div class="register-page">
+  <img
+    src="{{url_for('static',filename='images/login-icon.png')}}"
+    class="background-image"
+  />
+  <div class="register-box center">
+    <p class="register-title">Register</p>
+    <form
+      id="form"
+      onsubmit="validateRegister(); return false"
+      action="{{url_for('registerform')}}"
+      method="POST"
+      class="register-form"
+    >
+      <p class="register-text-1">Email</p>
+      <input
+        type="text"
+        name="email"
+        class="form-control register-email"
+        aria-label="Email"
+        aria-describedby="basic-addon1"
+      />
+      <p class="register-text-2">Username</p>
+      <input
+        type="text"
+        name="username"
+        class="form-control register-username"
+        aria-label="Email"
+        aria-describedby="basic-addon1"
+      />
+      <p class="register-text-3">Password</p>
+      <input
+        type="password"
+        name="password"
+        class="form-control register-password"
+        aria-label="password"
+        aria-describedby="basic-addon1"
+      />
+      <p class="register-text-4">Confirm password</p>
+      <input
+        type="password"
+        name="confirmpassword"
+        class="form-control register-confirmpassword"
+        aria-label="password"
+        aria-describedby="basic-addon1"
+      />
+      <input
+        type="checkbox"
+        id="terms"
+        name="terms"
+        class="register-terms"
+        value="on"
+      />
+      <p class="register-text-5">Agree to Terms and Conditions</p>
+      <input
+        type="checkbox"
+        id="privacy"
+        name="privacy"
+        class="register-privacy"
+        value="on"
+      />
+      <p class="register-text-6">Agree to Privacy Policy</p>
+      <input
+        type="submit"
+        name="login-submit"
+        class="form-control register-submit"
+        aria-label="register-submit"
+        value="Register"
+      />
+    </form>
+    <p class="register-text-7">Already have an account?</p>
+    <a class="register-text-8" href="{{url_for('login')}}">Log In Here</a>
+  </div>
+</div>
+
+{% endblock %}

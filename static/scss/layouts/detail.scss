@@ -1,0 +1,132 @@
+@import "../import.scss";
+
+.detail{
+    @include page;
+    background-color: $bg-darkblue;
+    &__bgimg{
+        width: 70vw;
+        opacity: 0.25;
+        transform: translate(-10%, 0);
+    }
+    &__content{
+        color: $text-white;
+    }
+}
+
+
+.detailbox{
+    width: 70%;
+    margin: 3em auto;
+    border-radius: 5px;
+    padding: 1px;
+    background-color: $section-darkgray;
+    @include child_margin_vert(1em);
+}
+
+.header{
+    @include tri-header;
+
+    &__center{
+        text-align: center;
+    }
+
+    &__right{
+        text-align: right;
+        padding-right: 1em;
+    }
+
+    &__link{
+        color: $button-blue;
+        text-decoration: none;
+
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
+
+.line{
+    width: 100%;
+    height: 1px;
+    background-color: $text-gray;
+}
+
+
+.info{
+    display: flex;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+	gap: 1em;
+
+    &__img{
+		width: 40%;
+        min-width: 100px;
+    }
+
+    &__box{
+        flex-grow: 1;
+		min-width: 15em;
+		flex-basis: 0;
+        @include child_margin_vert(1em, true);
+    }
+
+    &__graph{
+        width: 100%;
+        border-radius: 5px;
+    }
+
+
+    &__buttoncontainer{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    &__firstbutton{
+        @include button;
+        background-color: $button-blue;
+        flex-basis: 150px;
+        color: $text-white;
+    }
+    &__secondbutton{
+        @include button;
+        background-color: $button-orange;
+        flex-basis: 150px;
+        color: $text-white;
+    }
+
+}
+
+
+.pred{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    column-gap: 5em;
+
+    &__title{
+        text-align: center;
+    }
+
+    &__line{
+        width: 100%;
+        height: 1px;
+        background-color: $text-gray;
+        margin: 10px 0px;
+    }
+
+    &__entry{
+        text-align: center;
+        background-color: $section-gray;
+        border-radius: 5px;
+        padding: 10px;
+        flex-basis: 150px;
+        margin-inline: 1em;
+    }
+
+}

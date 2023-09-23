@@ -1,0 +1,49 @@
+@import "../_helpers.scss";
+
+@mixin _inputbar-style(
+  $width,
+  $bg-color: $section-gray,
+  $text-color: $text-white,
+  $placeholder-color: $text-gray
+) {
+  background-color: $bg-color;
+  color: $text-color;
+  caret-color: $text-color;
+  width: $width;
+
+  display: block;
+  border: 0px;
+  outline: 0;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: $font-size-subtitle;
+}
+
+@mixin inputbar(
+  $width,
+  $bg-color: $section-gray,
+  $text-color: $text-white,
+  $placeholder-color: $text-gray,
+  $focus-color: $border-blue,
+) {
+  @include _inputbar-style(
+    $width,
+    $bg-color,
+    $text-color,
+    $placeholder-color
+  );
+  &:focus {
+    @include _inputbar-style(
+      $width,
+      $bg-color,
+      $text-color,
+      $placeholder-color
+    );
+    box-shadow: 0 0 5px 2px $focus-color;
+  }
+
+  &::placeholder {
+    color: $placeholder-color;
+  }
+}

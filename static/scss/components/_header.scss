@@ -1,0 +1,19 @@
+@mixin tri-header{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    &__left{
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    &__center{
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    &__right{
+        grid-row: 1;
+        grid-column: 3;
+    }
+}

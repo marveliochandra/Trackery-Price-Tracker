@@ -1,0 +1,49 @@
+{% extends "base.html" %} {% block content %}
+<link
+  href="{{url_for('static', filename='css/layouts/inventory.css')}}"
+  rel="stylesheet"
+/>
+<div class="inventory">
+  <img
+    src="{{url_for('static',filename='images/search-logo.png')}}"
+    class="inventory__bgimg"
+  />
+
+  <div class="inventory__content">
+
+    <div class="header">
+      <div class="header__center">Tracking List</div>
+      {% if 'email' in session%}
+      <div class="header__right">{{item|length}}/20</div>
+      {% else %}
+      <div class="header__right">0/20</div>
+      {% endif %}
+    </div>
+
+
+    <div class="line"></div>
+
+    {% if 'email' in session%}
+    <form class="inventory__list" action="{{url_for('detail')}}">
+      {% set index = namespace(value=0) %}
+      {% for item in item %}
+      <div class="entry">
+        <img
+          class="entry__img"
+          src="{{item[1]}}"
+        />
+        <div class="entry__name">{{item[0]}}</div>
+        <div class="entry__price">Rp {{item[3]}}</div>
+        <a href="{{url_for('itemdetail', index = index.value)}}" class = "entry__firstbutton">More info</a>
+        <a href="{{url_for('inventorydelete', index = index.value)}}" class = "entry__secondbutton">Remove Tracking</a>
+        {% set index.value = index.value + 1 %}
+      </div>
+      {% endfor %}
+      </div>
+    </form>
+    {% else %}
+    <div><p>Please Log in to view inventory</p></div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

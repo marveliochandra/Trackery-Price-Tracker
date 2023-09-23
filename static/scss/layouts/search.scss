@@ -1,0 +1,81 @@
+@import "../_import.scss";
+
+.search{
+    @include page;
+    background-color: $bg-darkblue;
+
+    &__content{
+        @include child_margin_vert(3em);
+        @include child_margin_auto;
+    }
+
+    &__bgimg{
+        width: 70vw;
+        opacity: 0.25;
+        transform: translate(-10%, 0);
+    }
+
+    &__barcontainer{
+        width: 100%;
+        @include child_margin_auto;
+    }
+
+    &__bar{
+        @include inputbar(Max(30%, 250px));
+    }
+
+}
+
+.result{
+    background-color: $section-gray;
+    color: $text-white;
+    padding: 1.5em;
+
+    width: 80%;
+    border-radius: 10px;
+
+    @include child_margin_vert(1em, true);
+
+    &__summary{
+        display: flex;
+        align-items: center;
+    }
+
+    &__icon{
+        width: Min(120px, 15vw);
+        margin-right: 2em;
+    }
+
+    &__empty{
+        text-align: center;
+    }
+
+    &__box{
+        width: min-content;
+        max-width: 100%;
+        margin-inline: auto;
+
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 12em;
+        gap: 1em;
+
+        overflow-x: auto;
+
+        scrollbar-color: $button-orange $section-lightgray; //firefox
+        // chrome
+        &::-webkit-scrollbar{
+            background-color: $section-lightgray;
+            border-radius: 5px;
+            height: 0.5em;
+        }
+        &::-webkit-scrollbar-thumb{
+            background-color: $button-orange;
+            border-radius: 5px;
+        }
+    }
+}
+
+.entry{
+    @include item;
+}

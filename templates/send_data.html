@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<link href="{{url_for('static', filename='css/layouts/send_data.css')}}" rel="stylesheet" />
+<div class="return-register">
+  <img src="{{url_for('static',filename='images/Home-icon.png')}}" class="background-image" />
+  <div class="return-text">
+    <p class="return-text-main"></p>
+    <div class="input-group mb-3 login-box center">
+      <!-- Change the 'home' to the wip search, this will enable basicly search without pressing submit button -->
+      <!-- currently doesnt have any sort of protection against something like SQLInjection,will need further improvement and standardization -->
+      <button name = "loginbutton" onclick = "window.location.href = 'login';" class="login-button form-control">Login</button>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

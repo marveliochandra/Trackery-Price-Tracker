@@ -1,0 +1,69 @@
+$text-white: #ffffff;
+$text-gray: #8f8c8c;
+
+$section-gray: #3d414a;
+$section-darkgray: #212328;
+$section-lightgray: #808080;
+
+$bg-black: #111111;
+$bg-darkblue: #121318;
+
+$border-blue: #5865f2;
+
+$button-orange: #ff6740;
+$button-blue: #5865f2;
+
+
+$font-size-title: 2rem;
+$font-size-subtitle: 1.125rem;
+
+@mixin button {
+  border-radius: 5px;
+  padding: 0.25em;
+  outline: 0;
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+}
+
+@mixin child_margin_vert($amt, $zero_edge: false) {
+  > * {
+    margin-top: ($amt/2);
+    margin-bottom: ($amt/2);
+  }
+  $edge: if($zero_edge, 0, $amt);
+  > *:first-child {
+    margin-top: $edge;
+  }
+  > *:last-child {
+    margin-bottom: $edge;
+  }
+}
+
+@mixin child_margin_hor($amt, $zero_edge: false) {
+  > * {
+    margin-left: ($amt/2);
+    margin-right: ($amt/2);
+  }
+  $edge: if($zero_edge, 0, $amt);
+  > *:first-child {
+    margin-left: $edge;
+  }
+  > *:last-child {
+    margin-right: $edge;
+  }
+}
+
+@mixin fix_image_ratio($aspect-ratio: 16/9) {
+  aspect-ratio: $aspect-ratio;
+  object-fit: cover;
+}
+
+@mixin child_margin_auto {
+  > * {
+    margin-inline: auto;
+  }
+}
